@@ -1,4 +1,5 @@
 let wrapper = document.querySelector('.wrapper');
+let linesRing = document.querySelector('.linesRing');
 let line1 = document.querySelector(".line1");
 let line2 = document.querySelector(".line2");
 let lines = document.querySelector(".lines");
@@ -55,9 +56,9 @@ function checkPosition(){
                 lines.classList.remove('flyIn');
                 flyOut();
                 function flyOut(){
-                wrapper.className = "wrapper flyOut";
-        }
-
+                    wrapper.className = "wrapper flyOut";
+                }
+                linesRing.className = "linesRing";
             }
 
         }
@@ -69,6 +70,7 @@ function checkPosition(){
     } else { // circle not already in the centre, so fly in
         flyIn();
         function flyIn(){
+            linesRing.className = "linesRing";
             wrapper.className = "wrapper flyIn"; // trigger the animation
             lines.classList.add('flyIn'); // because I change the wrapper size during flying and need to change the lines position accordings as well, so I add a class to the lines as well. Not necessary...
             setTimeout(showPie1, 500); // the flyin process takes .5s, so wait 500 to show pie1
@@ -110,7 +112,7 @@ function checkPosition(){
         }
     }
 }
-
+// change opacity of the pies based on mouse position
 allPies.forEach(hoverIn);
 function hoverIn(pie){
     pie.addEventListener('mouseenter', Opacity);
@@ -125,5 +127,18 @@ function hoverOut(pie){
         pie.style.opacity = ".5";
     }
 }
-
-
+// add a shadow when hover over centre button
+hoverButton();
+function hoverButton(){
+    lines.addEventListener('mouseenter', showRing);
+    function showRing(){
+        linesRing.className = "linesRing bigger";
+    }
+}
+setTimeout(leaveButton, 300); // set a little timeout when mouse leave the centre button
+function leaveButton(){
+    lines.addEventListener('mouseleave', hideRing);
+    function hideRing(){
+        linesRing.className = "linesRing";
+    }
+}
