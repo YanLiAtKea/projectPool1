@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+div.wrapper {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+div.quaterPie {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    overflow: hidden;
+    transform-style: preserve-3D;
+    transition: transform 1s linear;
+}
+div.quaterPie1 {
+    left: 100px;
+    top: 100px;
+}
+div.quaterPie2 {
+    left: 0;
+    top: 100px;
+}
+div.quaterPie4 {
+    left: 100px;
+    top: 0px;
+}
+div.quaterPie3 {
+    left: 0;
+    top: 0;
+}
+div.wholePie {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+div.wholePie1 {
+    top: -100px;
+    left: -100px;
+}
+div.wholePie2 {
+    background-color: orange;
+    top: -100px;
+    left: 0;
+}
+div.wholePie4 {
+    background-color: green;
+    top: -0;
+    left: -100px;
+}
+div.wholePie3 {
+    background-color: yellow;
+    top: 0;
+    left: 0;
+}
+div.quaterPie1.turn1 {
+    transform: rotate(270deg);
+    transform-origin: top left;
+}
