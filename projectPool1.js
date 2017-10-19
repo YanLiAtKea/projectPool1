@@ -38,7 +38,7 @@ function checkPosition(){
         function hidePie(pie){
             hidePie1();
             function hidePie1(){
-                document.querySelector('.wholePie1').className = "wholePie wholePie1 turnOut"
+                document.querySelector('.wholePie1').className = "wholePie wholePie1 turnOut";
                 pie1.className = "quaterPie quaterPie1 turnOut";
                 hidePie3(); // first hide pie3, then pie2, in the opposite order as when fly in. don't really need to wait 1ms here, but to be safe?
                 setTimeout(hidePie2, 150);
@@ -60,9 +60,13 @@ function checkPosition(){
                 }
                 linesRing.className = "linesRing";
             }
-
+            setTimeout(resetPie, 300); // after the centre button and pies are back to the left edge, reset everything
+            function resetPie(){
+                document.querySelector('.wholePie1').className = "wholePie wholePie1";
+                wrapper.className = "wrapper";
+            }
         }
-        setTimeout(unCross, 200); // the flyOut itself takes .3s (CSS line 97), so set this unCross animation to start at .2s, so that it looks like the x is turning = on its way to the left edge of the screen
+        setTimeout(unCross, 200); // the flyOut itself takes .3s (CSS line 109), so set this unCross animation to start at .2s, so that it looks like the x is turning = on its way to the left edge of the screen
         function unCross(){
             line1.classList.remove("clicked");
             line2.classList.remove("clicked");

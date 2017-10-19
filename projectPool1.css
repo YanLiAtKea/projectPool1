@@ -6,7 +6,8 @@
 }
 div.text {
     width: 90vw;
-    min-width: 600px;
+    min-width: 400px;
+    max-width: 700px;
     height: 70vh;
     margin: 30px auto auto 30px;
     position: fixed;
@@ -86,7 +87,7 @@ div.wrapper {
     width: 100px;
     height: 100px;
     position: absolute;
-    top: 30vh;
+    top: 37vh;
     left: -20px;
 }
 .wrapper.flyIn {
