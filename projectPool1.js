@@ -1,3 +1,4 @@
+// ask teacher about line 136
 let wrapper = document.querySelector('.wrapper');
 let linesRing = document.querySelector('.linesRing');
 let line1 = document.querySelector(".line1");
@@ -9,26 +10,7 @@ let pie2 = document.querySelector('.quaterPie2');
 let pie3 = document.querySelector('.quaterPie3');
 let pie4 = document.querySelector('.quaterPie4');
 let wholePie1 = document.querySelector('.wholePie1');
-/*
-lines.addEventListener('click', flyIn);
-function flyIn(){
-    wrapper.className = "wrapper flyIn";
-    setTimeout(showPies, 500);
-    function showPies(){
-        pie1.style.display = "inherit";
-        pie1.className = "quaterPie quaterPie1 turn1";
-        setTimeout(showPie2, 500);
-    }
-    function showPie2(){
-        pie2.style.display = "inherit";
-    }
-    setTimeout(cross, 500);
-    function cross() {
-        line1.classList.add("clicked");
-        line2.classList.add("clicked");
-    }
-}
-*/
+let imgs = document.querySelectorAll('img');
 // click on the centre circle
 lines.addEventListener('click', checkPosition);
 // check the position of this circle, if it's at it's original position, then make cross, if it's already in the middle of the page, then turn the cross back to the =
@@ -145,5 +127,13 @@ function leaveButton(){
     lines.addEventListener('mouseleave', hideRing);
     function hideRing(){
         linesRing.className = "linesRing";
+    }
+}
+// this founction makes sure that mouse over +-*/ doesn't cause pie to dim, which will otherwise happen because when mouse enter img, it's considered left the pie area. Don't know if setting function bubbling could solve this, so use this
+imgs.forEach(helpSibling);
+function helpSibling(img){
+    img.addEventListener('mouseenter', showSibling);
+    function showSibling(){
+        img.parentNode.childNodes[3].style.opacity = ".9"; //don't why the sibling is with index 3 in the childNodes.....got this nr through childNodes feedback in inspector
     }
 }
