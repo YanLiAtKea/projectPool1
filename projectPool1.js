@@ -1,5 +1,8 @@
-// ask teacher about line 136
+// ask teacher about line 136, 156
+let textArea = document.querySelector('.text');
 let wrapper = document.querySelector('.wrapper');
+let h3 = document.querySelector('h3');
+let spans = document.querySelectorAll('span');
 let linesRing = document.querySelector('.linesRing');
 let line1 = document.querySelector(".line1");
 let line2 = document.querySelector(".line2");
@@ -11,6 +14,10 @@ let pie3 = document.querySelector('.quaterPie3');
 let pie4 = document.querySelector('.quaterPie4');
 let wholePie1 = document.querySelector('.wholePie1');
 let imgs = document.querySelectorAll('img');
+let plus = document.querySelector('#imgPlus');
+let minus = document.querySelector('#imgMinus');
+let multi = document.querySelector('#imgMulti');
+let division = document.querySelector('#imgDivision');
 // click on the centre circle
 lines.addEventListener('click', checkPosition);
 // check the position of this circle, if it's at it's original position, then make cross, if it's already in the middle of the page, then turn the cross back to the =
@@ -129,11 +136,62 @@ function leaveButton(){
         linesRing.className = "linesRing";
     }
 }
-// this founction makes sure that mouse over +-*/ doesn't cause pie to dim, which will otherwise happen because when mouse enter img, it's considered left the pie area. Don't know if setting function bubbling could solve this, so use this
+// this founction makes sure that when mouse over +-*/ the pie underneath that sign does not dim, which will otherwise happen because when mouse enter img, it's considered left the pie area. Don't know if setting function bubbling could solve this, so use this
 imgs.forEach(helpSibling);
 function helpSibling(img){
     img.addEventListener('mouseenter', showSibling);
     function showSibling(){
         img.parentNode.childNodes[3].style.opacity = ".9"; //don't why the sibling is with index 3 in the childNodes.....got this nr through childNodes feedback in inspector
     }
+}
+// when click on + sigh, change the blahh to "plus"s and make it look like it adding from the beginning
+plus.addEventListener('click', clickPlus);
+function clickPlus(){
+    h3.textContent = "As You Wish ~";
+    let spans = document.querySelectorAll('span');
+    spans.forEach(changeToPlus);
+    function changeToPlus(span){
+        span.textContent = "";
+        let newSpan = document.createElement('span');
+        newSpan.textContent = "plus plus pluus ";
+        let ini = 1;
+        let addPlusesV = setInterval(addPluses, 1000);
+        function addPluses(){
+            if (ini < 2){ // why each time will generate many spans, not only one?
+                ini ++;
+                textArea.insertBefore(newSpan, textArea.childNodes[2]);
+            } else {
+                ini = 2;
+                clearInterval(addPlusesV);
+            }
+        }
+    }
+}
+// when click on - sign, change the blahs to "minus" and make it look like it's losing children from the end
+minus.addEventListener('click', clickMinus);
+function clickMinus(){
+    h3.textContent = "As You Wish ~";
+    let spans = document.querySelectorAll('span');
+    spans.forEach(changeToMinus);
+    function changeToMinus(span){
+        span.textContent = "minus minus minnnus ";
+        setTimeout(chopSpan, 1000);
+        function chopSpan(){
+            let childNr = spans.length;
+            chopOneSpan();
+            function chopOneSpan(){
+                if (childNr >190) {
+                    childNr --;
+                    textArea.removeChild(textArea.lastChild);
+                    console.log(childNr);
+                }
+            }
+        }
+    }
+}
+multi.addEventListener('mouseenter', notClickable);
+division.addEventListener('mouseenter', notClickable);
+function notClickable(){
+    multi.style.cursor = "not-allowed";
+    division.style.cursor = "not-allowed";
 }
