@@ -24,6 +24,9 @@ span {
     margin: 0;
     position: relative;
 }
+.lines:hover {
+    cursor: pointer;
+}
 .linesRing {
     width: 100px;
     height: 100px;
@@ -122,12 +125,11 @@ div.quaterPie {
     height: 200px;
     position: absolute;
     overflow: hidden;
-    opacity: .5;
+    z-index: 2;
 }
 div.quaterPie1 {
     left: 200px;
     top: 0;
-    opacity: 1;
 }
 div.quaterPie2 {
     left: 200px;
@@ -148,10 +150,13 @@ div.wholePie {
     border-radius: 50%;
     position: absolute;
     background-color: #D69185;
+    opacity: .5;
+    z-index: 1;
 }
 div.wholePie1 {
     top: 0;
     left: -200px;
+    opacity: .9;
 }
 div.wholePie2 {
     top: -200px;
@@ -190,4 +195,30 @@ div.quaterPie1.turnOut {
     to {
         transform : rotate(0);
     }
+}
+img {
+    position: absolute;
+    z-index: 3;
+    width: 70px;
+}
+img:hover {
+    cursor: pointer;
+}
+img#imgPlus {
+    transform: rotate(90deg);
+    left: 55px;
+    bottom: 50px;
+}
+img#imgMinus {
+    left: 55px;
+    bottom: 85px;
+}
+img#imgDivision {
+    left: 80px;
+    bottom: 80px;
+}
+img#imgMulti {
+    width: 60px;
+    left: 60px;
+    bottom: 80px;
 }

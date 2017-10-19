@@ -3,11 +3,12 @@ let linesRing = document.querySelector('.linesRing');
 let line1 = document.querySelector(".line1");
 let line2 = document.querySelector(".line2");
 let lines = document.querySelector(".lines");
-let allPies = document.querySelectorAll('.quaterPie');
+let allPies = document.querySelectorAll('.wholePie');
 let pie1 = document.querySelector('.quaterPie1');
 let pie2 = document.querySelector('.quaterPie2');
 let pie3 = document.querySelector('.quaterPie3');
 let pie4 = document.querySelector('.quaterPie4');
+let wholePie1 = document.querySelector('.wholePie1');
 /*
 lines.addEventListener('click', flyIn);
 function flyIn(){
@@ -87,10 +88,10 @@ function checkPosition(){
                 pie1.className = "quaterPie quaterPie1 turnIn";
                 setTimeout(showPie2, 200); // the turning of the pie is now set to .6s, so 1 third of the time is 200
                 setTimeout(showPie3, 400);
-                setTimeout(dimPie1, 540); // because pie1 by default has opacity = 1 even though it doesn't have focus with mouse, so need to dim pie1. after the turning and dimming, every pie will have full opacity when mouse enters. see comment below as well
+                setTimeout(dimPie1, 550); // because pie1 by default has opacity = 1 even though it doesn't have focus with mouse, so need to dim pie1. after the turning and dimming, every pie will have full opacity when mouse enters. see comment below as well
                 function dimPie1(){
                     let ini = 1;
-                    let opacityLowerV = setInterval(opacityLower, 10); // gradually lower opacity. could also use CSS animation for this. will run 6 times and each takes 10ms, altogether 60, add to the 540 on line 79 = 600, so when pie1 finish turning, it will have the same opacity as other pies
+                    let opacityLowerV = setInterval(opacityLower, 10); // gradually lower opacity. could also use CSS animation for this. will run 5 times and each takes 10ms, altogether 60, add to the 540 on line 79 = 600, so when pie1 finish turning, it will have the same opacity as other pies
                     function opacityLower(){
                         if (ini > .51){
                             ini -= .1;
@@ -98,7 +99,7 @@ function checkPosition(){
                             ini = .5;
                             clearInterval(opacityLowerV);
                         }
-                        pie1.style.opacity = ini;
+                        wholePie1.style.opacity = ini;
                     }
                 }
             }
@@ -121,7 +122,7 @@ allPies.forEach(hoverIn);
 function hoverIn(pie){
     pie.addEventListener('mouseenter', Opacity);
     function Opacity(){
-        pie.style.opacity = "1";
+        pie.style.opacity = ".9";
     }
 }
 allPies.forEach(hoverOut);
