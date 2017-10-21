@@ -3,7 +3,6 @@ let textArea = document.querySelector('.text');
 let wrapper = document.querySelector('.wrapper');
 let h3 = document.querySelector('h3');
 let spans = document.querySelectorAll('span');
-let spansArray = Array.from(spans);
 let linesRing = document.querySelector('.linesRing');
 let line1 = document.querySelector(".line1");
 let line2 = document.querySelector(".line2");
@@ -148,12 +147,14 @@ function helpSibling(img){
 // when click on + sigh, change the blahh to "plus"s and make it look like it adding from the beginning
 plus.addEventListener('click', clickPlus);
 function clickPlus(){
-    h3.textContent = "As You Wish ~  I will stop, don't worry ~";
-    spans.forEach(changeToEmpty);
-    function changeToEmpty(span){
-        span.textContent = "";
+    if (h3.textContent == "The magic pie ~") { // so that this will run only when the user click on + before click on - if the user has already clicked minus, then the old blahs don't exist anymore, so no need to removeOldSpan(if run then will get error cuz node doesn't exist anymore)
+        h3.textContent = "As You Wish ~  I will stop soon, don't worry ~";
+        spans.forEach(removeOldSpan);
+        function removeOldSpan(span){
+            textArea.removeChild(span);
+        }
     }
-    let addPlusesV = setInterval(addPluses, 100);
+    let addPlusesV = setInterval(addPluses, 50);
     let ini = 1;
     function addPluses(){
         let newSpan = document.createElement('span');
@@ -172,12 +173,11 @@ minus.addEventListener('click', clickMinus);
 function clickMinus(){
     h3.textContent = "As You Wish ~ If you click - right after +, or vise versa, they'll fight ...";
     let spans = document.querySelectorAll('span');
-    let spansArray = Array.from(spans);
     spans.forEach(changeToMinus);
     function changeToMinus(span){
         span.textContent = "minu minu minus ";
     }
-    let chopSpanInt = setInterval(chopSpan, 100);
+    let chopSpanInt = setInterval(chopSpan, 50);
     let childNr = spans.length;
     function chopSpan(){
         childNr --;
@@ -185,13 +185,11 @@ function clickMinus(){
         function chopOneSpan(){
             if (childNr >13) { // child nr is not the same as span nr
                 textArea.removeChild(textArea.lastChild);
-                console.log(childNr);
             } else {
                 clearInterval(chopSpanInt);
             }
         }
     }
-
 }
 multi.addEventListener('mouseenter', notClickable);
 division.addEventListener('mouseenter', notClickable);
