@@ -228,9 +228,11 @@ function multiply(){
 }
 */
 // no effect for division yet
-division.addEventListener('mouseenter', notClickable);
-multi.addEventListener('mouseenter', notClickable);
+pie2.addEventListener('mouseenter', notClickable);
+pie3.addEventListener('mouseenter', notClickable);
 function notClickable(){
-    division.style.cursor = "not-allowed";
+    pie2.style.cursor = "not-allowed";
+    pie3.style.cursor = "not-allowed";
     multi.style.cursor = "not-allowed";
+    division.style.cursor = "not-allowed";
 }
