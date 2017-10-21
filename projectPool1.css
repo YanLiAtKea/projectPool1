@@ -125,6 +125,7 @@ div.wrapper {
     }
 }
 div.quaterPie {
+    cursor: pointer;
     display: none;
     width: 200px;
     height: 200px;

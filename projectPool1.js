@@ -144,10 +144,10 @@ function helpSibling(img){
         img.parentNode.childNodes[3].style.opacity = ".9"; //don't why the sibling is with index 3 in the childNodes.....got this nr through childNodes feedback in inspector
     }
 }
-// when click on + sigh, change the blahh to "plus"s and make it look like it adding from the beginning
-plus.addEventListener('click', clickPlus);
+// when click on + sign, change the blahh to "plus"s and make it look like it adding from the beginning
+pie1.addEventListener('click', clickPlus);
 function clickPlus(){
-    if (h3.textContent == "The magic pie ~") { // so that this will run only when the user click on + before click on - if the user has already clicked minus, then the old blahs don't exist anymore, so no need to removeOldSpan(if run then will get error cuz node doesn't exist anymore)
+    if (h3.textContent == "The magic pie ~" || h3.textContent == "As You Wish ~ or maybe not the same as you expected? ") { // so that this will run only when user hasn't clicked on minus, cuz then the old blahs/texts don't exist anymore, so no need to removeOldSpan(if run then will get error cuz node doesn't exist anymore)
         h3.textContent = "As You Wish ~  I will stop soon, don't worry ~";
         spans.forEach(removeOldSpan);
         function removeOldSpan(span){
@@ -169,7 +169,7 @@ function clickPlus(){
     }
 }
 // when click on - sign, change the blahs to "minus" and make it look like it's losing children from the end
-minus.addEventListener('click', clickMinus);
+pie4.addEventListener('click', clickMinus);
 function clickMinus(){
     h3.textContent = "As You Wish ~ If you click - right after +, or vise versa, they'll fight ...";
     let spans = document.querySelectorAll('span');
@@ -191,9 +191,46 @@ function clickMinus(){
         }
     }
 }
-multi.addEventListener('mouseenter', notClickable);
+/*
+// when click on multiply
+multi.addEventListener('click', multiply);
+function multiply(){
+    h3.textContent = "As You Wish ~ or maybe not the same as you expected? ";
+    spans[0].textContent = "1"; //// whatever nr set here, calculation results always turn to 9 81 6561 etc. DON'T KNOW WHY...
+    spans[1].textContent = "2";
+    let multiplyInt = setInterval(multiSelf, 50);
+    let ini = 1;
+    textArea = document.getElementsByClassName('.text')
+    if (!textArea.firstChild){
+        let iniSpan = document.createElement('span');
+        iniSpan.textContent = "1";
+        let iniSpan2 = document.createElement('span');
+        iniSpan2.textContent = "2";
+        let textArea = document.querySelector('.text');
+        textArea.appendChild(iniSpan);
+        textArea.appendChild(iniSpan2);
+        let multiplyInt = setInterval(multiSelf, 50);
+    } else {
+    }
+    function multiSelf(){
+        if (ini<8){
+            let spanNumber = spans[ini].textContent;
+            let number = parseInt(spanNumber);
+            ini++;
+            spans[ini].textContent = number * number + " ";  // have to add space, otherwise spans will form one really long ling. DON'T KNOW WHY...
+        } else if (ini <177){
+            spans[ini].textContent = "too big to display ";
+            ini++;
+        } else {
+            clearInterval(multiplyInt);
+        }
+    }
+}
+*/
+// no effect for division yet
 division.addEventListener('mouseenter', notClickable);
+multi.addEventListener('mouseenter', notClickable);
 function notClickable(){
-    multi.style.cursor = "not-allowed";
     division.style.cursor = "not-allowed";
+    multi.style.cursor = "not-allowed";
 }
