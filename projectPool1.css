@@ -12,10 +12,10 @@ div.text {
     width: 90vw;
     min-width: 400px;
     max-width: 700px;
-    height: 70vh;
+    height: 47.5em;
     margin: 10px auto auto 30px;
     position: fixed;
-    overflow: hidden;
+    overflow: scroll;
 }
 span {
     margin-left: 2em;

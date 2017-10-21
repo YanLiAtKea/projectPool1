@@ -3,6 +3,7 @@ let textArea = document.querySelector('.text');
 let wrapper = document.querySelector('.wrapper');
 let h3 = document.querySelector('h3');
 let spans = document.querySelectorAll('span');
+let spansArray = Array.from(spans);
 let linesRing = document.querySelector('.linesRing');
 let line1 = document.querySelector(".line1");
 let line2 = document.querySelector(".line2");
@@ -147,47 +148,50 @@ function helpSibling(img){
 // when click on + sigh, change the blahh to "plus"s and make it look like it adding from the beginning
 plus.addEventListener('click', clickPlus);
 function clickPlus(){
-    h3.textContent = "As You Wish ~";
-    let spans = document.querySelectorAll('span');
-    spans.forEach(changeToPlus);
-    function changeToPlus(span){
+    h3.textContent = "As You Wish ~  I will stop, don't worry ~";
+    spans.forEach(changeToEmpty);
+    function changeToEmpty(span){
         span.textContent = "";
+    }
+    let addPlusesV = setInterval(addPluses, 100);
+    let ini = 1;
+    function addPluses(){
         let newSpan = document.createElement('span');
         newSpan.textContent = "plus plus pluus ";
-        let ini = 1;
-        let addPlusesV = setInterval(addPluses, 1000);
-        function addPluses(){
-            if (ini < 2){ // why each time will generate many spans, not only one?
-                ini ++;
-                textArea.insertBefore(newSpan, textArea.childNodes[2]);
-            } else {
-                ini = 2;
-                clearInterval(addPlusesV);
-            }
+        if (ini < 177){
+            ini ++;
+            textArea.insertBefore(newSpan, textArea.childNodes[2]);
+        } else {
+            ini = 177;
+            clearInterval(addPlusesV);
         }
     }
 }
 // when click on - sign, change the blahs to "minus" and make it look like it's losing children from the end
 minus.addEventListener('click', clickMinus);
 function clickMinus(){
-    h3.textContent = "As You Wish ~";
+    h3.textContent = "As You Wish ~ If you click - right after +, or vise versa, they'll fight ...";
     let spans = document.querySelectorAll('span');
+    let spansArray = Array.from(spans);
     spans.forEach(changeToMinus);
     function changeToMinus(span){
-        span.textContent = "minus minus minnnus ";
-        setTimeout(chopSpan, 1000);
-        function chopSpan(){
-            let childNr = spans.length;
-            chopOneSpan();
-            function chopOneSpan(){
-                if (childNr >190) {
-                    childNr --;
-                    textArea.removeChild(textArea.lastChild);
-                    console.log(childNr);
-                }
+        span.textContent = "minu minu minus ";
+    }
+    let chopSpanInt = setInterval(chopSpan, 100);
+    let childNr = spans.length;
+    function chopSpan(){
+        childNr --;
+        chopOneSpan();
+        function chopOneSpan(){
+            if (childNr >13) { // child nr is not the same as span nr
+                textArea.removeChild(textArea.lastChild);
+                console.log(childNr);
+            } else {
+                clearInterval(chopSpanInt);
             }
         }
     }
+
 }
 multi.addEventListener('mouseenter', notClickable);
 division.addEventListener('mouseenter', notClickable);
